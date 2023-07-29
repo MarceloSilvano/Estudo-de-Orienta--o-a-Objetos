@@ -84,6 +84,14 @@ class computador {
 
     public function getProcessador(){
         if(isset($this->processador)){
+            return $this->processador->modelo;
+        }else{
+            return 'Sem processador';
+        }
+    }
+
+    public function getClock(){
+        if(isset($this->processador)){
             return $this->processador->clock;
         }else{
             return 'Sem processador';

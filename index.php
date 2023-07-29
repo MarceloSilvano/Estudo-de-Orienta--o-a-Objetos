@@ -28,4 +28,4 @@ $pcGamerPobre = new computador($fx6300,$ssd120,$hd1000,$hyperX4,$hyperX4);
 $pcGamer = new computador($fx6700,$ssd1000,NULL,$ramKingston8,$ramKingston8);
 $pcEscritorio = new computador($i3,$hd500,NULL,$ramKingston8,NULL);
 
-echo $pcGamer->getProcessador();
+echo $pcGamer->getClock();
