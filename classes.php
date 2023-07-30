@@ -97,6 +97,30 @@ class computador {
             return 'Sem processador';
         }
     }
+
+    public function getArmazenamento(){
+        if(isset($this->armazenamento1->capacidade)){
+            $tipo = get_class($this->armazenamento1);
+            $arm1 = $this->armazenamento1->capacidade.'('.$tipo.')';
+        }else{
+            $arm1 = '';
+        }
+        if(isset($this->armazenamento2->capacidade)){
+            $tipo = get_class($this->armazenamento2);
+            $arm2 = $this->armazenamento1->capacidade.'('.$tipo.')';
+        }else{
+            $arm2 = '';
+        }
+        if($arm1<>''&&$arm2<>''){
+            return $arm1.' / '.$arm2;
+        }elseif($arm1<>''){
+            return $arm1;
+        }elseif($arm2<>''){
+            return $arm2;
+        }else{
+            return 'Sem armazenamento';
+        }
+    }
 }
 
 

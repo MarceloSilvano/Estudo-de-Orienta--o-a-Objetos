@@ -27,5 +27,6 @@ $fx6700 = new processador('FX-6700',4,16,8,8);
 $pcGamerPobre = new computador($fx6300,$ssd120,$hd1000,$hyperX4,$hyperX4);
 $pcGamer = new computador($fx6700,$ssd1000,NULL,$ramKingston8,$ramKingston8);
 $pcEscritorio = new computador($i3,$hd500,NULL,$ramKingston8,NULL);
+$pcTeste = new computador($i3,NULL,NULL,$hyperX4,NULL);
 
-echo $pcGamer->getClock();
+echo $pcTeste->getArmazenamento();
