@@ -131,15 +131,16 @@ class computador {
             $arm2 = '';
         }
 
-        // Monta a string de informações sobre os dispositivos de armazenamento
-        if ($arm1 <> '' && $arm2 <> '') {
-            return $arm1 . ' / ' . $arm2;
-        } elseif ($arm1 <> '') {
-            return $arm1;
-        } elseif ($arm2 <> '') {
-            return $arm2;
-        } else {
-            return 'Sem armazenamento';
+        // Switch/case para combinar as informações dos dispositivos de armazenamento
+        switch (true) {
+            case $arm1 !== '' && $arm2 !== '':
+                return $arm1 . ' / ' . $arm2;
+            case $arm1 !== '':
+                return $arm1;
+            case $arm2 !== '':
+                return $arm2;
+            default:
+                return 'Sem armazenamento';
         }
     }
 }
