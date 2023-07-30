@@ -29,4 +29,4 @@ $pcGamer = new computador($fx6700,$ssd1000,NULL,$ramKingston8,$ramKingston8);
 $pcEscritorio = new computador($i3,$hd500,NULL,$ramKingston8,NULL);
 $pcTeste = new computador($i3,NULL,NULL,$hyperX4,NULL);
 
-echo $pcTeste->getArmazenamento();
+echo $pcEscritorio->getArmazenamento();

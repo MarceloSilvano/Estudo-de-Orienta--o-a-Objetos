@@ -1,4 +1,9 @@
 <?php
+//Definição classe geral de dispositivos de armazenamento
+class armazenamento{
+    public $velocidade; // Propriedade para a velocidade do dispositivo
+    public $capacidade; // Propriedade para a capacidade do dispositivo
+}
 
 // Definição da classe MemoriaRam
 class memoriaRam {
@@ -35,10 +40,7 @@ class processador {
 }
 
 // Definição da classe SSD
-class ssd {
-    public $velocidade; // Propriedade para a velocidade do SSD
-    public $capacidade; // Propriedade para a capacidade do SSD
-
+class ssd extends armazenamento{
     // Método construtor para inicializar as propriedades da classe
     function __construct($velocidade, $capacidade)
     {
@@ -48,10 +50,7 @@ class ssd {
 }
 
 // Definição da classe HD
-class hd {
-    public $velocidade; // Propriedade para a velocidade do HD
-    public $capacidade; // Propriedade para a capacidade do HD
-
+class hd extends armazenamento{
     // Método construtor para inicializar as propriedades da classe
     function __construct($velocidade, $capacidade)
     {
