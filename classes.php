@@ -1,13 +1,13 @@
 <?php
 
+// Definição da classe MemoriaRam
 class memoriaRam {
-    // propriedades
-    public $tipo;
-    public $capacidade;
-    public $frequencia;
+    public $tipo; // Propriedade para o tipo de memória RAM
+    public $capacidade; // Propriedade para a capacidade da memória RAM
+    public $frequencia; // Propriedade para a frequência da memória RAM
 
-    //construção
-    function __construct($tipo,$capacidade,$frequencia)
+    // Método construtor para inicializar as propriedades da classe
+    function __construct($tipo, $capacidade, $frequencia)
     {
         $this->tipo = $tipo;
         $this->capacidade = $capacidade;
@@ -15,53 +15,61 @@ class memoriaRam {
     }
 }
 
+// Definição da classe Processador
 class processador {
-    public $modelo;
-    public $clock;
-    public $cache;
-    public $nucleos;
-    public $threads;
+    public $modelo; // Propriedade para o modelo do processador
+    public $clock; // Propriedade para a frequência de clock do processador
+    public $cache; // Propriedade para o tamanho da cache do processador
+    public $nucleos; // Propriedade para o número de núcleos do processador
+    public $threads; // Propriedade para o número de threads do processador
 
-    function __construct($modelo,$clock,$cache,$nucleos,$threads)
+    // Método construtor para inicializar as propriedades da classe
+    function __construct($modelo, $clock, $cache, $nucleos, $threads)
     {
         $this->modelo = $modelo;
         $this->clock = $clock;
         $this->cache = $cache;
         $this->nucleos = $nucleos;
-        $this-> threads = $threads;
+        $this->threads = $threads;
     }
 }
 
-class ssd{
-    public $velocidade;
-    public $capacidade;
+// Definição da classe SSD
+class ssd {
+    public $velocidade; // Propriedade para a velocidade do SSD
+    public $capacidade; // Propriedade para a capacidade do SSD
 
-    function __construct($velocidade,$capacidade)
+    // Método construtor para inicializar as propriedades da classe
+    function __construct($velocidade, $capacidade)
     {
         $this->velocidade = $velocidade;
         $this->capacidade = $capacidade;
     }
 }
 
-class hd{
-    public $velocidade;
-    public $capacidade;
+// Definição da classe HD
+class hd {
+    public $velocidade; // Propriedade para a velocidade do HD
+    public $capacidade; // Propriedade para a capacidade do HD
 
-    function __construct($velocidade,$capacidade)
+    // Método construtor para inicializar as propriedades da classe
+    function __construct($velocidade, $capacidade)
     {
         $this->velocidade = $velocidade;
         $this->capacidade = $capacidade;
     }
 }
 
+// Definição da classe Computador
 class computador {
-    public $processador;
-    public $armazenamento1;
-    public $armazenamento2;
-    public $ramCanal1;
-    public $ramCanal2;
+    public $processador; // Propriedade para armazenar um objeto Processador
+    public $armazenamento1; // Propriedade para armazenar um objeto Armazenamento (SSD ou HD)
+    public $armazenamento2; // Propriedade para armazenar um segundo objeto Armazenamento (SSD ou HD)
+    public $ramCanal1; // Propriedade para armazenar um objeto MemoriaRam para o primeiro canal de RAM
+    public $ramCanal2; // Propriedade para armazenar um objeto MemoriaRam para o segundo canal de RAM
 
-    function __construct($processador,$armazenamento1,$armazenamento2,$ramCanal1,$ramCanal2)
+    // Método construtor para inicializar as propriedades da classe
+    function __construct($processador, $armazenamento1, $armazenamento2, $ramCanal1, $ramCanal2)
     {
         $this->processador = $processador;
         $this->armazenamento1 = $armazenamento1;
@@ -70,58 +78,68 @@ class computador {
         $this->ramCanal2 = $ramCanal2;
     }
 
-    public function getMemoria(){
-        if(isset($this->ramCanal1->capacidade)&&isset($this->ramCanal2->capacidade)){
-            return $this->ramCanal1->capacidade+$this->ramCanal2->capacidade;
-        }elseif(isset($this->ramCanal1->capacidade)){
+    // Método para obter a quantidade total de memória RAM do computador
+    public function getMemoria()
+    {
+        if (isset($this->ramCanal1->capacidade) && isset($this->ramCanal2->capacidade)) {
+            return $this->ramCanal1->capacidade + $this->ramCanal2->capacidade;
+        } elseif (isset($this->ramCanal1->capacidade)) {
             return $this->ramCanal1->capacidade;
-        }elseif(isset($this->ramCanal2->capacidade)){
+        } elseif (isset($this->ramCanal2->capacidade)) {
             return $this->ramCanal2->capacidade;
-        }else{
+        } else {
             return 'Sem memória';
         }
     }
 
-    public function getProcessador(){
-        if(isset($this->processador)){
+    // Método para obter o modelo do processador do computador
+    public function getProcessador()
+    {
+        if (isset($this->processador)) {
             return $this->processador->modelo;
-        }else{
+        } else {
             return 'Sem processador';
         }
     }
 
-    public function getClock(){
-        if(isset($this->processador)){
+    // Método para obter a frequência de clock do processador do computador
+    public function getClock()
+    {
+        if (isset($this->processador)) {
             return $this->processador->clock;
-        }else{
+        } else {
             return 'Sem processador';
         }
     }
 
-    public function getArmazenamento(){
-        if(isset($this->armazenamento1->capacidade)){
+    // Método para obter informações sobre os dispositivos de armazenamento do computador
+    public function getArmazenamento()
+    {
+        // Verifica se existe um dispositivo de armazenamento no canal 1
+        if (isset($this->armazenamento1->capacidade)) {
             $tipo = get_class($this->armazenamento1);
-            $arm1 = $this->armazenamento1->capacidade.'('.$tipo.')';
-        }else{
+            $arm1 = $this->armazenamento1->capacidade . '(' . $tipo . ')';
+        } else {
             $arm1 = '';
         }
-        if(isset($this->armazenamento2->capacidade)){
+
+        // Verifica se existe um dispositivo de armazenamento no canal 2
+        if (isset($this->armazenamento2->capacidade)) {
             $tipo = get_class($this->armazenamento2);
-            $arm2 = $this->armazenamento1->capacidade.'('.$tipo.')';
-        }else{
+            $arm2 = $this->armazenamento1->capacidade . '(' . $tipo . ')';
+        } else {
             $arm2 = '';
         }
-        if($arm1<>''&&$arm2<>''){
-            return $arm1.' / '.$arm2;
-        }elseif($arm1<>''){
+
+        // Monta a string de informações sobre os dispositivos de armazenamento
+        if ($arm1 <> '' && $arm2 <> '') {
+            return $arm1 . ' / ' . $arm2;
+        } elseif ($arm1 <> '') {
             return $arm1;
-        }elseif($arm2<>''){
+        } elseif ($arm2 <> '') {
             return $arm2;
-        }else{
+        } else {
             return 'Sem armazenamento';
         }
     }
 }
-
-
-?>
